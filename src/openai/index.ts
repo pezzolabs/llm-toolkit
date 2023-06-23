@@ -1,18 +1,17 @@
-import { OpenAIModelSettings } from "./types";
+import { OpenAIGptCostOptions, OpenAIGptModelSettings } from "./types";
 
 const openAIToolkit = () => {
-  const defineModel = (settings: OpenAIModelSettings): OpenAIModelSettings =>
-    settings;
+  const defineModel = <T>(settings: T): T => settings;
 
-  const calculateCostByTokens = (
-    promptTokens: number,
-    completionTokens: number,
-    model: keyof typeof models
-  ) => {
+  const calculateGptCost = ({
+    model,
+    promptTokens,
+    completionTokens,
+  }: OpenAIGptCostOptions & { model: keyof typeof gptModels }) => {
     const promptCost =
-      (promptTokens / 1000) * models[model].promptCostPer1000Tokens;
+      (promptTokens / 1000) * gptModels[model].promptCostPer1000Tokens;
     const completionCost =
-      (completionTokens / 1000) * models[model].completionsCostPer1000Tokens;
+      (completionTokens / 1000) * gptModels[model].completionsCostPer1000Tokens;
 
     return {
       promptCost,
@@ -20,26 +19,29 @@ const openAIToolkit = () => {
     };
   };
 
-  const models = {
-    ["gpt-3.5-turbo"]: defineModel({
+  const gptModels = {
+    ["gpt-3.5-turbo"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.0015,
       completionsCostPer1000Tokens: 0.002,
+      maxTokens: 4096,
     }),
 
-    ["gpt-4"]: defineModel({
+    ["gpt-4"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.03,
       completionsCostPer1000Tokens: 0.06,
+      maxTokens: 8192,
     }),
 
-    ["gpt-3.5-turbo-16k"]: defineModel({
+    ["gpt-3.5-turbo-16k"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.003,
       completionsCostPer1000Tokens: 0.004,
+      maxTokens: 16384,
     }),
   };
 
   return {
-    calculateCostByTokens,
-    models,
+    calculateGptCost,
+    gptModels,
   };
 };
 

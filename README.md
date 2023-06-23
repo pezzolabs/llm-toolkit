@@ -18,7 +18,7 @@ import { OpenAIToolkit } from "@pezzo/llm-toolkit";
 
 ```javascript
 const { promptCostPer1000Tokens, completionCostPer1000Tokens } =
-  OpenAIToolkit.models["gpt-3.5-turbo"];
+  OpenAIToolkit.gptModels["gpt-3.5-turbo"];
 ```
 
 ### Calculate cost of a prompt
@@ -26,15 +26,15 @@ const { promptCostPer1000Tokens, completionCostPer1000Tokens } =
 ```javascript
 // the modelName parameter is fully typed, you'll be able to see a a list with the available models
 
-const cost = OpenAIToolkit.calculateCostByTokens(
+const cost = OpenAIToolkit.calculateGptCost(
   promptTokens,
   completionTokens,
   modelName
 );
 ```
 
-_Note: The model name parameter is fully typed, you'll be able to see a list with the available models._
-![Example](./examples/list.png)
+_Note: The model name is fully typed, you'll be able to see a list with the available models._
+![Example](./examples/calculate.png)
 
 ### Available Providers
 
