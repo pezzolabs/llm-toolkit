@@ -8,7 +8,15 @@
     "build": "tsc",
     "start": "node dist/main.js"
   },
-  "keywords": ["your", "library", "keywords"],
-  "author": "Your Name",
-  "license": "MIT"
+  "keywords": [
+    "your",
+    "library",
+    "keywords"
+  ],
+  "author": "Itay Elgazar",
+  "license": "MIT",
+  "devDependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.1.3"
+  }
 }
