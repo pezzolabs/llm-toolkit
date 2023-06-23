@@ -24,13 +24,17 @@ const { promptCostPer1000Tokens, completionCostPer1000Tokens } =
 ### Calculate cost of a prompt
 
 ```javascript
+// the modelName parameter is fully typed, you'll be able to see a a list with the available models
+
 const cost = OpenAIToolkit.calculateCostByTokens(
   promptTokens,
   completionTokens,
   modelName
 );
-// the model parameter is fully typed, you'll be able to see a a list with the available models
 ```
+
+_Note: The model name parameter is fully typed, you'll be able to see a list with the available models._
+![Example](./examples/list.png)
 
 ### Available Providers
 
