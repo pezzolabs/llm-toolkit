@@ -21,24 +21,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Check package version
-        id: cpv
-        uses: PostHog/check-package-version@v2
-
-      - name: Echo versions
-        run: |
-          echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
-          echo "Published version: ${{ steps.cpv.outputs.published-version }}"
-
       - name: NPM Publish (@pezzo/llm-toolkit)
-        if: steps.cpv.outputs.is-new-version == 'true'
-        run: |
-          version=$(node -p "require('./package.json').version")
-          if [[ $version == *"alpha"* ]]; then
-            npm publish --access public --tag alpha
-          else
-            npm publish --access public
-          fi
-        working-directory: dist
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
