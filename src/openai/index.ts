@@ -25,7 +25,12 @@ const openAIToolkit = () => {
       completionsCostPer1000Tokens: 0.002,
       maxTokens: 4096,
     }),
-
+    ["ft:gpt-3.5-turbo-0613"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.0120,
+      completionsCostPer1000Tokens: 0.0160,
+      maxTokens: 4096,
+      trainingCostPer1000Tokens: 0.0080,
+    }),
     ["gpt-4"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.03,
       completionsCostPer1000Tokens: 0.06,
@@ -38,6 +43,7 @@ const openAIToolkit = () => {
       maxTokens: 16384,
     }),
   };
+
 
   return {
     calculateGptCost,
