@@ -20,30 +20,61 @@ const openAIToolkit = () => {
   };
 
   const gptModels = {
+    /**
+     * GPT-3.5
+     */
     ["gpt-3.5-turbo"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.0015,
       completionsCostPer1000Tokens: 0.002,
       maxTokens: 4096,
     }),
-    ["ft:gpt-3.5-turbo-0613"]: defineModel<OpenAIGptModelSettings>({
-      promptCostPer1000Tokens: 0.0120,
-      completionsCostPer1000Tokens: 0.0160,
-      maxTokens: 4096,
-      trainingCostPer1000Tokens: 0.0080,
+    ["gpt-3.5-turbo-16k"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.003,
+      completionsCostPer1000Tokens: 0.004,
+      maxTokens: 16385,
     }),
+    // New GPT-3.5 turbo model (Novermber 2023)
+    ["gpt-3.5-turbo-1106"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.0010,
+      completionsCostPer1000Tokens: 0.0020,
+      maxTokens: 16385,
+    }),
+    ["gpt-3.5-turbo-instruct"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.0015,
+      completionsCostPer1000Tokens: 0.0020,
+      maxTokens: 4096,
+    }),
+    /**
+     * GPT-4
+     */
     ["gpt-4"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.03,
       completionsCostPer1000Tokens: 0.06,
       maxTokens: 8192,
     }),
-
-    ["gpt-3.5-turbo-16k"]: defineModel<OpenAIGptModelSettings>({
-      promptCostPer1000Tokens: 0.003,
-      completionsCostPer1000Tokens: 0.004,
-      maxTokens: 16384,
+    ["gpt-4-32k"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.06,
+      completionsCostPer1000Tokens: 0.12,
+      maxTokens: 32768,
+    }),
+    ["gpt-4-turbo"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.01,
+      completionsCostPer1000Tokens: 0.03,
+      maxTokens: 128000,
+    }),
+    // Same as above
+    ["gpt-4-1106-preview"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.01,
+      completionsCostPer1000Tokens: 0.03,
+      maxTokens: 128000,
+    }),
+    // Same as above
+    ["gpt-4-1106-vision-preview"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.01,
+      completionsCostPer1000Tokens: 0.03,
+      maxTokens: 128000,
     }),
   };
-
 
   return {
     calculateGptCost,
