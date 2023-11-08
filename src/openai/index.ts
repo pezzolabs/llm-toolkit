@@ -57,11 +57,6 @@ const openAIToolkit = () => {
       completionsCostPer1000Tokens: 0.12,
       maxTokens: 32768,
     }),
-    ["gpt-4-turbo"]: defineModel<OpenAIGptModelSettings>({
-      promptCostPer1000Tokens: 0.01,
-      completionsCostPer1000Tokens: 0.03,
-      maxTokens: 128000,
-    }),
     // Same as above
     ["gpt-4-1106-preview"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.01,
@@ -69,7 +64,7 @@ const openAIToolkit = () => {
       maxTokens: 128000,
     }),
     // Same as above
-    ["gpt-4-1106-vision-preview"]: defineModel<OpenAIGptModelSettings>({
+    ["gpt-4-vision-preview"]: defineModel<OpenAIGptModelSettings>({
       promptCostPer1000Tokens: 0.01,
       completionsCostPer1000Tokens: 0.03,
       maxTokens: 128000,
