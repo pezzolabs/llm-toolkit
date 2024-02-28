@@ -69,6 +69,17 @@ const openAIToolkit = () => {
       completionsCostPer1000Tokens: 0.03,
       maxTokens: 4096,
     }),
+    ["gpt-4-0125-preview"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.01,
+      completionsCostPer1000Tokens: 0.03,
+      maxTokens: 4096,
+    }),
+    // Same as above
+    ["gpt-4-turbo-preview"]: defineModel<OpenAIGptModelSettings>({
+      promptCostPer1000Tokens: 0.01,
+      completionsCostPer1000Tokens: 0.03,
+      maxTokens: 4096,
+    }),
   };
 
   return {
