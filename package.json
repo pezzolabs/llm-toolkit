@@ -1,6 +1,6 @@
 {
   "name": "@pezzo/llm-toolkit",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Your library description",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
